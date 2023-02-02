@@ -1,17 +1,26 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-    int num1, num2, num3;
+    char str[100];
+    int i, length, flag = 0;
 
-    printf("Enter three numbers: ");
-    scanf("%d %d %d", &num1, &num2,             &num3);
+    printf("Enter a string: ");
+    scanf("%s", str);
 
-    if (num1 >= num2 && num1 >= num3) {
-        printf("%d is the largest     number.", num1);
-    } else if (num2 >= num1 && num2 >=                 num3) {
-        printf("%d is the largest     number.", num2);
+    length = strlen(str);
+
+    for (i = 0; i < length / 2; i++) {
+        if (str[i] != str[length - i - 1]) {
+            flag = 1;
+            break;
+        }
+    }
+
+    if (flag) {
+        printf("%s is not a palindrome.", str);
     } else {
-        printf("%d is the largest number.", num3);
+        printf("%s is a palindrome.", str);
     }
 
     return 0;
